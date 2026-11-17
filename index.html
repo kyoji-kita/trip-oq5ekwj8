@@ -528,7 +528,7 @@ footer h2 { color: var(--on-page); }
     <button type="button" role="tab" id="tab-day2" data-tab="day2" aria-controls="day2"><span class="sw d2"></span>2日目</button>
     <button type="button" role="tab" id="tab-extra" data-tab="extra" aria-controls="extra">寄り道</button>
     <button type="button" role="tab" id="tab-stay" data-tab="stay" aria-controls="stay">宿・ごはん</button>
-    <button type="button" role="tab" id="tab-todo" data-tab="todo" aria-controls="todo">ToDo<span class="badge" id="todo-badge">15</span></button>
+    <button type="button" role="tab" id="tab-todo" data-tab="todo" aria-controls="todo">ToDo<span class="badge" id="todo-badge">17</span></button>
     <button type="button" role="tab" id="tab-pay" data-tab="pay" aria-controls="pay">割り勘</button>
     <button type="button" role="tab" id="tab-notes" data-tab="notes" aria-controls="notes">メモ</button>
   </div>
@@ -984,67 +984,76 @@ footer h2 { color: var(--on-page); }
       <p>上から期限の早い順です。それぞれに担当を決めておくと、下の「北・だーよ・きいち」で自分の分だけ見られます。</p>
     </div>
     <p class="store-note" id="todo-store">この画面での変更はこの端末にだけ残ります。みんなの分は北のしおりで管理しています</p>
-    <div class="todo-filter" role="group" aria-label="担当で絞り込む" id="todo-filter"><button type="button" class="pill" data-filter="all" aria-pressed="true">全部</button><button type="button" class="pill" data-filter="kita" aria-pressed="false">北<span class="cnt">残り2</span></button><button type="button" class="pill" data-filter="dayo" aria-pressed="false">だーよ<span class="cnt">残り0</span></button><button type="button" class="pill" data-filter="kiichi" aria-pressed="false">きいち<span class="cnt">残り0</span></button></div>
-    <p class="todo-progress" id="todo-progress">全体で 1 / 16 済み</p>
+    <div class="todo-filter" role="group" aria-label="担当で絞り込む" id="todo-filter"><button type="button" class="pill" data-filter="all" aria-pressed="true">全部</button><button type="button" class="pill" data-filter="kita" aria-pressed="false">北<span class="cnt">残り11</span></button><button type="button" class="pill" data-filter="dayo" aria-pressed="false">だーよ<span class="cnt">残り6</span></button><button type="button" class="pill" data-filter="kiichi" aria-pressed="false">きいち<span class="cnt">残り6</span></button></div>
+    <p class="todo-progress" id="todo-progress">全体で 2 / 19 済み</p>
     <div id="todo-list"><div class="todo-group">
       <h3>予約（期限が早い順）</h3>
       <ul class="todo-items"><li class="todo-item">
         <input type="checkbox" id="t-shinkansen-go" data-todo="t-shinkansen-go">
-        <div><label for="t-shinkansen-go"><span class="t">行きの新幹線 のぞみ1号（12/18 東京6:00→広島9:49）3人分の指定席</span><span class="s"><span class="due">11/18 10:00〜発売</span></span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-shinkansen-go" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-shinkansen-go" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-shinkansen-go" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-shinkansen-go" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-shinkansen-go" aria-pressed="true">未定</button></div></div>
+        <div><label for="t-shinkansen-go"><span class="t">行きの新幹線 のぞみ1号（12/18 東京6:00→広島9:49）3人分の指定席</span><span class="s"><span class="due">11/18 10:00〜発売</span>3人の席が隣になるよう、まとめて取る</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-shinkansen-go" aria-pressed="true">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-shinkansen-go" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-shinkansen-go" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-shinkansen-go" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-shinkansen-go" aria-pressed="false">未定</button></div></div>
       </li><li class="todo-item">
         <input type="checkbox" id="t-shinkansen-back" data-todo="t-shinkansen-back">
-        <div><label for="t-shinkansen-back"><span class="t">帰りの新幹線 のぞみ54号（12/19 福山18:41→東京22:15）3人分の指定席</span><span class="s"><span class="due">11/19 10:00〜発売</span>乗車券は「福山→東京」で買う</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-shinkansen-back" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-shinkansen-back" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-shinkansen-back" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-shinkansen-back" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-shinkansen-back" aria-pressed="true">未定</button></div></div>
+        <div><label for="t-shinkansen-back"><span class="t">帰りの新幹線 のぞみ54号（12/19 福山18:41→東京22:15）3人分の指定席</span><span class="s"><span class="due">11/19 10:00〜発売</span>乗車券は「福山→東京」で買う</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-shinkansen-back" aria-pressed="true">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-shinkansen-back" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-shinkansen-back" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-shinkansen-back" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-shinkansen-back" aria-pressed="false">未定</button></div></div>
       </li><li class="todo-item">
         <input type="checkbox" id="t-rentacar" data-todo="t-rentacar">
-        <div><label for="t-rentacar"><span class="t">ニッポンレンタカー 八丁堀営業所 12/19 9:30 → 福山駅北口営業所 18:00までに返す（乗り捨て）</span><span class="s">晴れの日の案2に合わせて9:30から借りる。空き・乗り捨て料金（約9,000円の見込み）・両方のお店の営業時間を確かめる</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-rentacar" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-rentacar" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-rentacar" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-rentacar" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-rentacar" aria-pressed="true">未定</button></div></div>
+        <div><label for="t-rentacar"><span class="t">ニッポンレンタカー 八丁堀営業所 12/19 9:30 → 福山駅北口営業所 18:00までに返す（乗り捨て）</span><span class="s"><span class="due">11月中</span>晴れの日の案2に合わせて9:30から借りる。空き・乗り捨て料金（約9,000円の見込み）・両方のお店の営業時間を確かめる</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-rentacar" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-rentacar" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-rentacar" aria-pressed="true">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-rentacar" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-rentacar" aria-pressed="false">未定</button></div></div>
       </li><li class="todo-item done">
         <input type="checkbox" id="t-kiro" data-todo="t-kiro" checked>
         <div><label for="t-kiro"><span class="t">KIRO広島 Moderate Loft を予約（11/16に予約済み）</span><span class="s"><span class="due">キャンセル無料 12/14 23:59まで</span></span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-kiro" aria-pressed="true">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-kiro" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-kiro" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-kiro" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-kiro" aria-pressed="false">未定</button></div></div>
       </li></ul>
     </div><div class="todo-group">
       <h3>決めること</h3>
-      <ul class="todo-items"><li class="todo-item">
-        <input type="checkbox" id="t-drivers" data-todo="t-drivers">
-        <div><label for="t-drivers"><span class="t">運転する2人を決める</span><span class="s">呉 → 鞆の浦で交代する</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-drivers" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-drivers" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-drivers" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-drivers" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-drivers" aria-pressed="true">未定</button></div></div>
+      <ul class="todo-items"><li class="todo-item done">
+        <input type="checkbox" id="t-drivers" data-todo="t-drivers" checked>
+        <div><label for="t-drivers"><span class="t">運転する2人を決める → 北・きいちに決定</span><span class="s">呉 → 鞆の浦で交代する</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-drivers" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-drivers" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-drivers" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-drivers" aria-pressed="true">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-drivers" aria-pressed="false">未定</button></div></div>
       </li><li class="todo-item">
-        <input type="checkbox" id="t-money" data-todo="t-money">
-        <div><label for="t-money"><span class="t">誰が何を立て替えるか決める</span><span class="s">宿・新幹線・車。払ったらWalicaに書く</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-money" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-money" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-money" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-money" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-money" aria-pressed="true">未定</button></div></div>
-      </li></ul>
-    </div><div class="todo-group">
-      <h3>行く前に確かめる</h3>
-      <ul class="todo-items"><li class="todo-item">
-        <input type="checkbox" id="t-kiro-breakfast" data-todo="t-kiro-breakfast">
-        <div><label for="t-kiro-breakfast"><span class="t">KIROの朝食を追加するか決める</span><span class="s">予約のあとから追加できる。値段は未確認</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-kiro-breakfast" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-kiro-breakfast" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-kiro-breakfast" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-kiro-breakfast" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-kiro-breakfast" aria-pressed="true">未定</button></div></div>
-      </li><li class="todo-item">
-        <input type="checkbox" id="t-yamato" data-todo="t-yamato">
-        <div><label for="t-yamato"><span class="t">大和ミュージアムの12/19の開館と、前売りがあるか</span><span class="s">公式サイトで</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-yamato" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-yamato" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-yamato" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-yamato" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-yamato" aria-pressed="true">未定</button></div></div>
-      </li><li class="todo-item">
-        <input type="checkbox" id="t-hours" data-todo="t-hours">
-        <div><label for="t-hours"><span class="t">対潮楼・てつのくじら館の時間</span><span class="s">公式の情報で</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-hours" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-hours" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-hours" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-hours" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-hours" aria-pressed="true">未定</button></div></div>
-      </li><li class="todo-item">
-        <input type="checkbox" id="t-ropeway" data-todo="t-ropeway">
-        <div><label for="t-ropeway"><span class="t">弥山ロープウェイの12月の下りの最終</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-ropeway" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-ropeway" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-ropeway" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-ropeway" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-ropeway" aria-pressed="true">未定</button></div></div>
-      </li><li class="todo-item">
-        <input type="checkbox" id="t-ferry-cars" data-todo="t-ferry-cars">
-        <div><label for="t-ferry-cars"><span class="t">（晴れの日の案2用）フェリーに車が乗れるか確認：小長港⇄明石港（しまなみ海運）・垂水⇄竹原（大崎汽船/山陽商船）</span><span class="s">台数・予約がいるか・車の運賃も</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-ferry-cars" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-ferry-cars" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-ferry-cars" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-ferry-cars" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-ferry-cars" aria-pressed="true">未定</button></div></div>
+        <input type="checkbox" id="t-meet" data-todo="t-meet">
+        <div><label for="t-meet"><span class="t">12/18朝の集合時間と場所を決めて、LINEで送る</span><span class="s"><span class="due">11月中</span>東京駅6:00発なので5:40ごろ</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-meet" aria-pressed="true">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-meet" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-meet" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-meet" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-meet" aria-pressed="false">未定</button></div></div>
       </li><li class="todo-item">
         <input type="checkbox" id="t-weather" data-todo="t-weather">
         <div><label for="t-weather"><span class="t">12/19の天気と風を見て、2日目の案を決める（晴れ→案2・雨や強風→案1）</span><span class="s"><span class="due">12/18 夜</span>当日の朝にもフェリーの運航情報を見る</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-weather" aria-pressed="true">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-weather" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-weather" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-weather" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-weather" aria-pressed="false">未定</button></div></div>
       </li></ul>
     </div><div class="todo-group">
-      <h3>持ち物</h3>
+      <h3>行く前に確かめる</h3>
       <ul class="todo-items"><li class="todo-item">
-        <input type="checkbox" id="t-license" data-todo="t-license">
-        <div><label for="t-license"><span class="t">運転免許証（運転する2人）</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-license" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-license" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-license" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-license" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-license" aria-pressed="true">未定</button></div></div>
+        <input type="checkbox" id="t-etc" data-todo="t-etc">
+        <div><label for="t-etc"><span class="t">ETCカードを持っていく（高速・安芸灘大橋）</span><span class="s"><span class="due">当日</span></span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-etc" aria-pressed="true">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-etc" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-etc" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-etc" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-etc" aria-pressed="false">未定</button></div></div>
+      </li><li class="todo-item">
+        <input type="checkbox" id="t-yamato" data-todo="t-yamato">
+        <div><label for="t-yamato"><span class="t">大和ミュージアムの12/19の開館と、前売りがあるか（買えるなら買う）</span><span class="s"><span class="due">12月上旬</span>公式サイトで。隣のてつのくじら館の時間もあわせて</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-yamato" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-yamato" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-yamato" aria-pressed="true">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-yamato" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-yamato" aria-pressed="false">未定</button></div></div>
+      </li><li class="todo-item">
+        <input type="checkbox" id="t-ferry-cars" data-todo="t-ferry-cars">
+        <div><label for="t-ferry-cars"><span class="t">（晴れの日の案2用）フェリーに車が乗れるか確認：小長港⇄明石港（しまなみ海運）・垂水⇄竹原（大崎汽船/山陽商船）</span><span class="s"><span class="due">12月上旬</span>台数・予約がいるか・車の運賃も</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-ferry-cars" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-ferry-cars" aria-pressed="true">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-ferry-cars" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-ferry-cars" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-ferry-cars" aria-pressed="false">未定</button></div></div>
+      </li><li class="todo-item">
+        <input type="checkbox" id="t-ropeway" data-todo="t-ropeway">
+        <div><label for="t-ropeway"><span class="t">弥山ロープウェイの12月の下りの最終と、対潮楼の時間</span><span class="s"><span class="due">12月上旬</span>公式の情報で</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-ropeway" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-ropeway" aria-pressed="true">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-ropeway" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-ropeway" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-ropeway" aria-pressed="false">未定</button></div></div>
+      </li><li class="todo-item">
+        <input type="checkbox" id="t-dinner" data-todo="t-dinner">
+        <div><label for="t-dinner"><span class="t">1日目の夜ごはんの店を調べる（お好み焼きの候補2つ＋2軒目）</span><span class="s"><span class="due">12月上旬</span>金曜の夜は混むので、待ちが長いときの代わりの店も</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-dinner" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-dinner" aria-pressed="true">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-dinner" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-dinner" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-dinner" aria-pressed="false">未定</button></div></div>
+      </li><li class="todo-item">
+        <input type="checkbox" id="t-kiro-breakfast" data-todo="t-kiro-breakfast">
+        <div><label for="t-kiro-breakfast"><span class="t">KIROの朝食を追加するか決める（追加するなら北が手続き）</span><span class="s">予約のあとから追加できる。値段は未確認</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-kiro-breakfast" aria-pressed="true">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-kiro-breakfast" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-kiro-breakfast" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-kiro-breakfast" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-kiro-breakfast" aria-pressed="false">未定</button></div></div>
+      </li></ul>
+    </div><div class="todo-group">
+      <h3>連絡と持ち物</h3>
+      <ul class="todo-items"><li class="todo-item">
+        <input type="checkbox" id="t-share" data-todo="t-share">
+        <div><label for="t-share"><span class="t">だーよ・きいちにしおりとWalicaのURLを送る</span><span class="s"><span class="due">今週</span></span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-share" aria-pressed="true">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-share" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-share" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-share" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-share" aria-pressed="false">未定</button></div></div>
+      </li><li class="todo-item">
+        <input type="checkbox" id="t-walica" data-todo="t-walica">
+        <div><label for="t-walica"><span class="t">Walicaを開いて、自分の名前で入れるか確かめる</span><span class="s"><span class="due">今週</span>3人それぞれ</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-walica" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-walica" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-walica" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-walica" aria-pressed="true">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-walica" aria-pressed="false">未定</button></div></div>
+      </li><li class="todo-item">
+        <input type="checkbox" id="t-license-kita" data-todo="t-license-kita">
+        <div><label for="t-license-kita"><span class="t">運転免許証（北）</span><span class="s"><span class="due">当日</span></span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-license-kita" aria-pressed="true">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-license-kita" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-license-kita" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-license-kita" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-license-kita" aria-pressed="false">未定</button></div></div>
+      </li><li class="todo-item">
+        <input type="checkbox" id="t-license-kiichi" data-todo="t-license-kiichi">
+        <div><label for="t-license-kiichi"><span class="t">運転免許証（きいち）</span><span class="s"><span class="due">当日</span></span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-license-kiichi" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-license-kiichi" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-license-kiichi" aria-pressed="true">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-license-kiichi" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-license-kiichi" aria-pressed="false">未定</button></div></div>
       </li><li class="todo-item">
         <input type="checkbox" id="t-ic" data-todo="t-ic">
-        <div><label for="t-ic"><span class="t">交通系ICカード（JR・フェリー）</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-ic" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-ic" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-ic" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-ic" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-ic" aria-pressed="true">未定</button></div></div>
+        <div><label for="t-ic"><span class="t">交通系ICカード（JR・フェリー）</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-ic" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-ic" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-ic" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-ic" aria-pressed="true">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-ic" aria-pressed="false">未定</button></div></div>
       </li><li class="todo-item">
         <input type="checkbox" id="t-wear" data-todo="t-wear">
-        <div><label for="t-wear"><span class="t">歩きやすい靴と防寒・モバイルバッテリー</span><span class="s">弥山の坂と海風があるので</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-wear" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-wear" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-wear" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-wear" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-wear" aria-pressed="true">未定</button></div></div>
-      </li><li class="todo-item">
-        <input type="checkbox" id="t-share" data-todo="t-share">
-        <div><label for="t-share"><span class="t">だーよ・きいちにしおりとWalicaのURLを送る</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-share" aria-pressed="true">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-share" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-share" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-share" aria-pressed="false">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-share" aria-pressed="false">未定</button></div></div>
+        <div><label for="t-wear"><span class="t">歩きやすい靴と防寒・モバイルバッテリー</span><span class="s">弥山の坂と海風があるので</span></label><div class="owners" role="group" aria-label="担当"><span>担当</span><button type="button" class="owner-btn" data-owner="kita" data-item="t-wear" aria-pressed="false">北</button><button type="button" class="owner-btn" data-owner="dayo" data-item="t-wear" aria-pressed="false">だーよ</button><button type="button" class="owner-btn" data-owner="kiichi" data-item="t-wear" aria-pressed="false">きいち</button><button type="button" class="owner-btn" data-owner="all" data-item="t-wear" aria-pressed="true">みんな</button><button type="button" class="owner-btn none" data-owner="none" data-item="t-wear" aria-pressed="false">未定</button></div></div>
       </li></ul>
     </div></div>
   </section>
@@ -1353,36 +1362,39 @@ if (!document.getElementById("credits").firstElementChild) document.getElementBy
 /* ---- ToDo ---- */
 const TODO = [
   { title: "予約（期限が早い順）", items: [
-    { id: "t-shinkansen-go", t: "行きの新幹線 のぞみ1号（12/18 東京6:00→広島9:49）3人分の指定席", due: "11/18 10:00〜発売" },
+    { id: "t-shinkansen-go", t: "行きの新幹線 のぞみ1号（12/18 東京6:00→広島9:49）3人分の指定席", due: "11/18 10:00〜発売", s: "3人の席が隣になるよう、まとめて取る" },
     { id: "t-shinkansen-back", t: "帰りの新幹線 のぞみ54号（12/19 福山18:41→東京22:15）3人分の指定席", due: "11/19 10:00〜発売", s: "乗車券は「福山→東京」で買う" },
-    { id: "t-rentacar", t: "ニッポンレンタカー 八丁堀営業所 12/19 9:30 → 福山駅北口営業所 18:00までに返す（乗り捨て）", s: "晴れの日の案2に合わせて9:30から借りる。空き・乗り捨て料金（約9,000円の見込み）・両方のお店の営業時間を確かめる" },
+    { id: "t-rentacar", t: "ニッポンレンタカー 八丁堀営業所 12/19 9:30 → 福山駅北口営業所 18:00までに返す（乗り捨て）", due: "11月中", s: "晴れの日の案2に合わせて9:30から借りる。空き・乗り捨て料金（約9,000円の見込み）・両方のお店の営業時間を確かめる" },
     { id: "t-kiro", t: "KIRO広島 Moderate Loft を予約（11/16に予約済み）", due: "キャンセル無料 12/14 23:59まで" }
   ]},
   { title: "決めること", items: [
-    { id: "t-drivers", t: "運転する2人を決める", s: "呉 → 鞆の浦で交代する" },
-    { id: "t-money", t: "誰が何を立て替えるか決める", s: "宿・新幹線・車。払ったらWalicaに書く" }
-  ]},
-  { title: "行く前に確かめる", items: [
-    { id: "t-kiro-breakfast", t: "KIROの朝食を追加するか決める", s: "予約のあとから追加できる。値段は未確認" },
-    { id: "t-yamato", t: "大和ミュージアムの12/19の開館と、前売りがあるか", s: "公式サイトで" },
-    { id: "t-hours", t: "対潮楼・てつのくじら館の時間", s: "公式の情報で" },
-    { id: "t-ropeway", t: "弥山ロープウェイの12月の下りの最終" },
-    { id: "t-ferry-cars", t: "（晴れの日の案2用）フェリーに車が乗れるか確認：小長港⇄明石港（しまなみ海運）・垂水⇄竹原（大崎汽船/山陽商船）", s: "台数・予約がいるか・車の運賃も" },
+    { id: "t-drivers", t: "運転する2人を決める → 北・きいちに決定", s: "呉 → 鞆の浦で交代する" },
+    { id: "t-meet", t: "12/18朝の集合時間と場所を決めて、LINEで送る", due: "11月中", s: "東京駅6:00発なので5:40ごろ" },
     { id: "t-weather", t: "12/19の天気と風を見て、2日目の案を決める（晴れ→案2・雨や強風→案1）", due: "12/18 夜", s: "当日の朝にもフェリーの運航情報を見る" }
   ]},
-  { title: "持ち物", items: [
-    { id: "t-license", t: "運転免許証（運転する2人）" },
+  { title: "行く前に確かめる", items: [
+    { id: "t-etc", t: "ETCカードを持っていく（高速・安芸灘大橋）", due: "当日" },
+    { id: "t-yamato", t: "大和ミュージアムの12/19の開館と、前売りがあるか（買えるなら買う）", due: "12月上旬", s: "公式サイトで。隣のてつのくじら館の時間もあわせて" },
+    { id: "t-ferry-cars", t: "（晴れの日の案2用）フェリーに車が乗れるか確認：小長港⇄明石港（しまなみ海運）・垂水⇄竹原（大崎汽船/山陽商船）", due: "12月上旬", s: "台数・予約がいるか・車の運賃も" },
+    { id: "t-ropeway", t: "弥山ロープウェイの12月の下りの最終と、対潮楼の時間", due: "12月上旬", s: "公式の情報で" },
+    { id: "t-dinner", t: "1日目の夜ごはんの店を調べる（お好み焼きの候補2つ＋2軒目）", due: "12月上旬", s: "金曜の夜は混むので、待ちが長いときの代わりの店も" },
+    { id: "t-kiro-breakfast", t: "KIROの朝食を追加するか決める（追加するなら北が手続き）", s: "予約のあとから追加できる。値段は未確認" }
+  ]},
+  { title: "連絡と持ち物", items: [
+    { id: "t-share", t: "だーよ・きいちにしおりとWalicaのURLを送る", due: "今週" },
+    { id: "t-walica", t: "Walicaを開いて、自分の名前で入れるか確かめる", due: "今週", s: "3人それぞれ" },
+    { id: "t-license-kita", t: "運転免許証（北）", due: "当日" },
+    { id: "t-license-kiichi", t: "運転免許証（きいち）", due: "当日" },
     { id: "t-ic", t: "交通系ICカード（JR・フェリー）" },
-    { id: "t-wear", t: "歩きやすい靴と防寒・モバイルバッテリー", s: "弥山の坂と海風があるので" },
-    { id: "t-share", t: "だーよ・きいちにしおりとWalicaのURLを送る" }
+    { id: "t-wear", t: "歩きやすい靴と防寒・モバイルバッテリー", s: "弥山の坂と海風があるので" }
   ]}
 ];
 /* 3人と担当の名前 */
 const PEOPLE = [["kita", "北"], ["dayo", "だーよ"], ["kiichi", "きいち"]];
 const PNAME = Object.fromEntries(PEOPLE);
 const OWNERS = [...PEOPLE, ["all", "みんな"], ["none", "未定"]];
-const DEFAULT_OWNER = { "t-kiro": "kita", "t-share": "kita", "t-weather": "kita" };
-const DEFAULT_DONE = { "t-kiro": true };
+const DEFAULT_OWNER = { "t-shinkansen-go": "kita", "t-shinkansen-back": "kita", "t-rentacar": "kiichi", "t-kiro": "kita", "t-drivers": "all", "t-meet": "kita", "t-weather": "kita", "t-etc": "kita", "t-yamato": "kiichi", "t-ferry-cars": "dayo", "t-ropeway": "dayo", "t-dinner": "dayo", "t-kiro-breakfast": "kita", "t-share": "kita", "t-walica": "all", "t-license-kita": "kita", "t-license-kiichi": "kiichi", "t-ic": "all", "t-wear": "all" };
+const DEFAULT_DONE = { "t-kiro": true, "t-drivers": true };
 /* 書き出した1ファイル版では、作ったときのしおりの中身がここに入る */
 const SEED = {};
 const LOCAL_NOTE = "この画面での変更はこの端末にだけ残ります。みんなの分は北のしおりで管理しています";
@@ -1400,7 +1412,7 @@ const ALL_ITEMS = TODO.flatMap(g => g.items);
 let todoState = {};
 (function initTodo() {
   const old = ls.get("hiroshima-todo-v1", {});
-  const saved = ls.get("hiroshima-todo-v2", null);
+  const saved = ls.get("hiroshima-todo-v3", null);
   const seed = SEED.todos || {};
   ALL_ITEMS.forEach(it => {
     const s = (saved && saved[it.id]) || seed[it.id] || {};
@@ -1442,7 +1454,7 @@ function renderTodo() {
 }
 
 async function saveTodo(id) {
-  ls.set("hiroshima-todo-v2", todoState);
+  ls.set("hiroshima-todo-v3", todoState);
   if (!STORE) return;
   try { await STORE.collection("todos").doc(id).set({ done: todoState[id].done, owner: todoState[id].owner }); }
   catch (e) { document.getElementById("todo-store").textContent = "しおりに保存できませんでした。この端末にだけ残しています。"; }
