@@ -395,6 +395,22 @@ footer ul { margin: 0; padding-left: 18px; }
 .copy-btn { font: inherit; font-size: 14px; font-weight: 700; color: var(--surface); background: var(--sea); border: 0; border-radius: 4px; padding: 6px 16px; cursor: pointer; }
 .copy-status { font-size: 13px; color: var(--muted); }
 
+/* ToDoを足す */
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.todo-add { display: grid; gap: 10px; margin: 0 0 16px; padding: 14px; background: var(--lemon-soft, var(--sea-soft)); border-radius: 22px; max-width: 760px; }
+.todo-add input { font: inherit; font-size: 16px; color: var(--fg); background: var(--sheet, var(--surface)); border: 2px solid var(--line); border-radius: 999px; padding: 10px 16px; width: 100%; min-width: 0; }
+.todo-add input:focus-visible { outline: 2px solid var(--sea); outline-offset: 1px; }
+.todo-add-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
+.todo-add .seg .pill { min-height: 36px; padding-inline: 13px; font-size: 13px; }
+.todo-add .btn-primary { min-height: 44px; padding-inline: 24px; font-size: 15px; }
+.todo-add-msg { font-size: 13px; color: var(--muted); min-height: 1em; }
+.todo-add-msg:empty { display: none; }
+.store-note.warn { color: var(--shu); font-weight: 700; }
+.todo-group.added h3::after { content: "3人の誰かが足したもの"; font-size: 12px; font-weight: 700; color: var(--muted); margin-left: 8px; }
+.todo-del { font: inherit; font-size: 12px; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: 999px; padding: 0 10px; line-height: 1.9; cursor: pointer; }
+.todo-del.yes { color: #fff; background: var(--shu); border-color: var(--shu); }
+.todo-del-row { display: inline-flex; gap: 6px; align-items: center; margin-left: 6px; font-size: 12px; color: var(--muted); }
+
 /* ===== デザインG 瀬戸内レモン ===== */
 :root {
   --page: #174a8b; --lemon: #ffd23f; --lemon-deep: #f2b705; --lemon-soft: #fff4c7; --on-lemon: #174a8b;
@@ -475,6 +491,7 @@ main.wrap { padding-bottom: 8px; }
 .owner-btn[aria-pressed="true"] { background: #174a8b; border-color: #174a8b; color: #fff; }
 .walica-btn { background: var(--lemon); color: var(--on-lemon); font-weight: 900; box-shadow: 0 4px 0 var(--lemon-deep); }
 .btn-primary, .copy-btn { border-radius: 999px; }
+.btn-primary { background: #174a8b; color: #fff; }
 .day-card .go { color: var(--fg); text-decoration-color: var(--lemon); text-decoration-thickness: 3px; }
 .todo-item input { width: 22px; height: 22px; accent-color: #174a8b; }
 
@@ -981,8 +998,17 @@ footer h2 { color: var(--on-page); }
     <div class="sec-head">
       <span class="label">TO DO</span>
       <h2>予約と準備</h2>
-      <p>上から期限の早い順です。それぞれに担当を決めておくと、下の「北・だーよ・きいち」で自分の分だけ見られます。</p>
+      <p>思いついたことは下の欄から足せます。チェック・担当・足したことは3人で同じものが見えます。「北・だーよ・きいち」を押すと、自分の分だけ出ます。</p>
     </div>
+    <form class="todo-add" id="todo-add" novalidate>
+      <label class="vh" for="todo-new">足すToDo</label>
+      <input type="text" id="todo-new" maxlength="80" placeholder="ToDoを足す（例：日焼け止めを買う）" autocomplete="off" enterkeyhint="done">
+      <div class="todo-add-row">
+        <div class="seg" id="todo-add-owner" role="group" aria-label="担当"><button type="button" class="pill" data-add-owner="kita" aria-pressed="false">北</button><button type="button" class="pill" data-add-owner="dayo" aria-pressed="false">だーよ</button><button type="button" class="pill" data-add-owner="kiichi" aria-pressed="false">きいち</button><button type="button" class="pill" data-add-owner="all" aria-pressed="true">みんな</button></div>
+        <button type="submit" class="btn-primary" id="todo-add-btn">足す</button>
+      </div>
+      <span class="todo-add-msg" id="todo-add-msg" aria-live="polite"></span>
+    </form>
     <p class="store-note" id="todo-store">この画面での変更はこの端末にだけ残ります。みんなの分は北のしおりで管理しています</p>
     <div class="todo-filter" role="group" aria-label="担当で絞り込む" id="todo-filter"><button type="button" class="pill" data-filter="all" aria-pressed="true">全部</button><button type="button" class="pill" data-filter="kita" aria-pressed="false">北<span class="cnt">残り11</span></button><button type="button" class="pill" data-filter="dayo" aria-pressed="false">だーよ<span class="cnt">残り6</span></button><button type="button" class="pill" data-filter="kiichi" aria-pressed="false">きいち<span class="cnt">残り6</span></button></div>
     <p class="todo-progress" id="todo-progress">全体で 2 / 19 済み</p>
@@ -1407,18 +1433,49 @@ const ls = {
 let STORE = null; /* しおりのデータベース。使えないときは null のまま（この端末に保存） */
 const yen = n => "¥" + Math.round(n).toLocaleString("ja-JP");
 
-/* ---- ToDo（担当つき） ---- */
-const ALL_ITEMS = TODO.flatMap(g => g.items);
+/* ---- ToDo（担当つき・あとから足せる・3人で共有） ---- */
+const SYNC_URL = "https://script.google.com/macros/s/AKfycbzfmmC7g00I47FSv_B79iQMRcFuPl3Wpzq-AQjLwji8Eil1t4qoCHQiNGhRjKRvrmA8/exec"; /* 北のスプレッドシート（Apps Script）。空ならこの端末に保存 */
+const SHEET_NOTE = "チェック・担当・足したToDoは3人で共有されます（北のスプレッドシートに保存）。";
+const FAIL_NOTE = "保存できませんでした。電波のいい所でもう一度押してください。";
+const OFFLINE_NOTE = "共有のToDoを読み込めませんでした。電波のいい所で開き直してください。";
+const BUILTIN = TODO.flatMap(g => g.items);
+let custom = []; /* あとから足したToDo：{ id, t } */
 let todoState = {};
+let MODE = "local"; /* local / sheet / db */
+let pending = 0, pendingDel = null, addOwner = "all";
+const allItems = () => [...custom, ...BUILTIN];
+const validOwner = o => (OWNERS.some(x => x[0] === o) ? o : "none");
+const isBuiltin = id => BUILTIN.some(it => it.id === id);
 (function initTodo() {
   const old = ls.get("hiroshima-todo-v1", {});
-  const saved = ls.get("hiroshima-todo-v3", null);
-  const seed = SEED.todos || {};
-  ALL_ITEMS.forEach(it => {
-    const s = (saved && saved[it.id]) || seed[it.id] || {};
+  const saved = ls.get("hiroshima-todo-v3", null) || {};
+  custom = ls.get("hiroshima-todo-custom-v1", []).filter(c => c && c.id && c.t);
+  BUILTIN.forEach(it => {
+    const s = saved[it.id] || {};
     todoState[it.id] = { done: !!(s.done ?? old[it.id] ?? DEFAULT_DONE[it.id]), owner: s.owner || DEFAULT_OWNER[it.id] || "none" };
   });
+  custom.forEach(c => { const s = saved[c.id] || {}; todoState[c.id] = { done: !!s.done, owner: validOwner(s.owner || "all") }; });
 })();
+function saveLocal() { ls.set("hiroshima-todo-v3", todoState); ls.set("hiroshima-todo-custom-v1", custom); }
+function setNote(text, warn) {
+  const el = document.getElementById("todo-store");
+  el.textContent = text;
+  el.classList.toggle("warn", !!warn);
+}
+/* 共有先（スプレッドシート・しおりのデータベース）の中身を、この画面に写す */
+function applyRemote(rows) {
+  const next = {}, nextCustom = [];
+  BUILTIN.forEach(it => { next[it.id] = { done: !!DEFAULT_DONE[it.id], owner: DEFAULT_OWNER[it.id] || "none" }; });
+  (rows || []).forEach(r => {
+    if (!r || !r.id) return;
+    const id = String(r.id);
+    if (isBuiltin(id)) { next[id] = { done: !!r.done, owner: validOwner(r.owner) }; return; }
+    if (!r.t || r.deleted) return;
+    nextCustom.push({ id, t: String(r.t).slice(0, 80), at: String(r.updatedAt || r.at || "") });
+    next[id] = { done: !!r.done, owner: validOwner(r.owner || "all") };
+  });
+  todoState = next; custom = nextCustom;
+}
 let todoFilter = "all";
 
 function ownerChips(it) {
@@ -1428,72 +1485,157 @@ function ownerChips(it) {
 }
 const visible = it => todoFilter === "all" || [todoFilter, "all"].includes(todoState[it.id].owner);
 
+function itemHtml(it, isCustom) {
+  const st = todoState[it.id];
+  const del = !isCustom ? "" : pendingDel === it.id
+    ? `<span class="todo-del-row">消しますか？<button type="button" class="todo-del yes" data-del-yes="${esc(it.id)}">消す</button><button type="button" class="todo-del" data-del-no>やめる</button></span>`
+    : `<span class="todo-del-row"><button type="button" class="todo-del" data-del="${esc(it.id)}">消す</button></span>`;
+  return `<li class="todo-item${st.done ? " done" : ""}">
+        <input type="checkbox" id="${esc(it.id)}" data-todo="${esc(it.id)}"${st.done ? " checked" : ""}>
+        <div><label for="${esc(it.id)}"><span class="t">${isCustom ? esc(it.t) : it.t}</span>${!isCustom && (it.due || it.s) ? `<span class="s">${it.due ? `<span class="due">${it.due}</span>` : ""}${it.s || ""}</span>` : ""}</label>${ownerChips(it)}${del}</div>
+      </li>`;
+}
 function renderTodo() {
-  const rem = p => ALL_ITEMS.filter(it => !todoState[it.id].done && [p, "all"].includes(todoState[it.id].owner)).length;
+  const items = allItems();
+  const rem = p => items.filter(it => !todoState[it.id].done && [p, "all"].includes(todoState[it.id].owner)).length;
   document.getElementById("todo-filter").innerHTML =
     `<button type="button" class="pill" data-filter="all" aria-pressed="${todoFilter === "all"}">全部</button>` +
     PEOPLE.map(([k, n]) => `<button type="button" class="pill" data-filter="${k}" aria-pressed="${todoFilter === k}">${n}<span class="cnt">残り${rem(k)}</span></button>`).join("");
-  const groups = TODO.map(g => {
-    const items = g.items.filter(visible);
-    if (!items.length) return "";
-    return `<div class="todo-group">
+  document.getElementById("todo-add-owner").innerHTML = [...PEOPLE, ["all", "みんな"]].map(([k, n]) =>
+    `<button type="button" class="pill" data-add-owner="${k}" aria-pressed="${addOwner === k}">${n}</button>`).join("");
+  const groups = [{ title: "足したToDo", items: custom, custom: true }, ...TODO].map(g => {
+    const list = g.items.filter(visible);
+    if (!list.length) return "";
+    return `<div class="todo-group${g.custom ? " added" : ""}">
       <h3>${g.title}</h3>
-      <ul class="todo-items">${items.map(it => {
-        const st = todoState[it.id];
-        return `<li class="todo-item${st.done ? " done" : ""}">
-        <input type="checkbox" id="${it.id}" data-todo="${it.id}"${st.done ? " checked" : ""}>
-        <div><label for="${it.id}"><span class="t">${it.t}</span>${it.due || it.s ? `<span class="s">${it.due ? `<span class="due">${it.due}</span>` : ""}${it.s || ""}</span>` : ""}</label>${ownerChips(it)}</div>
-      </li>`; }).join("")}</ul>
+      <ul class="todo-items">${list.map(it => itemHtml(it, !!g.custom)).join("")}</ul>
     </div>`;
   }).join("");
   document.getElementById("todo-list").innerHTML = groups ||
     `<p class="todo-empty">${PNAME[todoFilter]}が担当のToDoはまだありません。「全部」に戻して、担当を選んでください。</p>`;
-  const done = ALL_ITEMS.filter(it => todoState[it.id].done).length;
-  document.getElementById("todo-progress").textContent = `全体で ${done} / ${ALL_ITEMS.length} 済み`;
-  document.getElementById("todo-badge").textContent = ALL_ITEMS.length - done ? String(ALL_ITEMS.length - done) : "";
+  const done = items.filter(it => todoState[it.id].done).length;
+  document.getElementById("todo-progress").textContent = `全体で ${done} / ${items.length} 済み`;
+  document.getElementById("todo-badge").textContent = items.length - done ? String(items.length - done) : "";
 }
 
-async function saveTodo(id) {
-  ls.set("hiroshima-todo-v3", todoState);
-  if (!STORE) return;
-  try { await STORE.collection("todos").doc(id).set({ done: todoState[id].done, owner: todoState[id].owner }); }
-  catch (e) { document.getElementById("todo-store").textContent = "しおりに保存できませんでした。この端末にだけ残しています。"; }
+/* 変更を保存する。body は { id, done, owner } / { id, t, owner, done } / { id, deleted } */
+async function push(body) {
+  saveLocal();
+  if (MODE === "sheet") {
+    pending++;
+    let rows = null, ok = false;
+    try {
+      const r = await fetch(SYNC_URL, { method: "POST", body: JSON.stringify(body) });
+      const j = await r.json();
+      ok = !!(j && j.ok); rows = j && j.items;
+    } catch (e) { ok = false; }
+    pending--;
+    if (!ok) { setNote(FAIL_NOTE, true); return false; }
+    setNote(SHEET_NOTE);
+    if (!pending && rows) { applyRemote(rows); saveLocal(); renderTodo(); }
+    return true;
+  }
+  if (MODE === "db") {
+    try {
+      const doc = STORE.collection("todos").doc(body.id);
+      if (body.deleted) await doc.delete();
+      else {
+        const st = todoState[body.id], c = custom.find(x => x.id === body.id);
+        await doc.set(c ? { done: st.done, owner: st.owner, t: c.t, at: c.at || "" } : { done: st.done, owner: st.owner });
+      }
+      return true;
+    } catch (e) { setNote("しおりに保存できませんでした。この端末にだけ残しています。", true); return false; }
+  }
+  return true;
 }
 document.getElementById("todo-list").addEventListener("change", e => {
   const box = e.target.closest("input[data-todo]");
   if (!box) return;
-  todoState[box.dataset.todo].done = box.checked;
-  renderTodo(); saveTodo(box.dataset.todo);
+  const id = box.dataset.todo;
+  todoState[id].done = box.checked;
+  renderTodo(); push({ id, done: todoState[id].done, owner: todoState[id].owner });
 });
 document.getElementById("todo-list").addEventListener("click", e => {
   const b = e.target.closest("button[data-owner]");
-  if (!b) return;
-  todoState[b.dataset.item].owner = b.dataset.owner;
-  renderTodo(); saveTodo(b.dataset.item);
+  if (b) {
+    const id = b.dataset.item;
+    todoState[id].owner = b.dataset.owner;
+    renderTodo(); push({ id, done: todoState[id].done, owner: todoState[id].owner });
+    return;
+  }
+  const d = e.target.closest("[data-del]"), y = e.target.closest("[data-del-yes]"), n = e.target.closest("[data-del-no]");
+  if (d) { pendingDel = d.dataset.del; renderTodo(); return; }
+  if (n) { pendingDel = null; renderTodo(); return; }
+  if (y) {
+    const id = y.dataset.delYes;
+    pendingDel = null;
+    custom = custom.filter(c => c.id !== id); delete todoState[id];
+    renderTodo(); push({ id, deleted: true });
+  }
 });
 document.getElementById("todo-filter").addEventListener("click", e => {
   const b = e.target.closest("button[data-filter]");
   if (!b) return;
-  todoFilter = b.dataset.filter; renderTodo();
+  todoFilter = b.dataset.filter;
+  if (todoFilter !== "all") addOwner = todoFilter;
+  renderTodo();
 });
-document.getElementById("todo-store").textContent = LOCAL_NOTE;
+document.getElementById("todo-add-owner").addEventListener("click", e => {
+  const b = e.target.closest("button[data-add-owner]");
+  if (!b) return;
+  addOwner = b.dataset.addOwner; renderTodo();
+});
+document.getElementById("todo-add").addEventListener("submit", async e => {
+  e.preventDefault();
+  const input = document.getElementById("todo-new"), msg = document.getElementById("todo-add-msg"), btn = document.getElementById("todo-add-btn");
+  const text = input.value.trim().slice(0, 80);
+  if (!text) { msg.textContent = "足すことを書いてください"; input.focus(); return; }
+  const id = "c-" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  custom.unshift({ id, t: text, at: new Date().toISOString() });
+  todoState[id] = { done: false, owner: addOwner };
+  input.value = ""; pendingDel = null;
+  renderTodo();
+  btn.disabled = true;
+  const ok = await push({ id, t: text, owner: addOwner, done: false });
+  btn.disabled = false;
+  msg.textContent = ok ? `足しました（${addOwner === "all" ? "みんな" : PNAME[addOwner]}）` : "";
+});
+setNote(LOCAL_NOTE);
 renderTodo();
 
-/* しおりのデータベースにつながったら、ToDoをみんなで同じものにする */
+/* 共有先につなぐ：GitHubのしおりは北のスプレッドシート、claude.ai のしおりは使えればスプレッドシート、だめならしおりのデータベース */
+async function pullSheet() {
+  if (MODE !== "sheet" || pending) return false;
+  try {
+    const r = await fetch(SYNC_URL, { cache: "no-store" });
+    const j = await r.json();
+    if (!j || !j.ok) throw new Error("bad");
+    if (!pending) { applyRemote(j.items); saveLocal(); renderTodo(); setNote(SHEET_NOTE); }
+    return true;
+  } catch (e) { setNote(OFFLINE_NOTE, true); return false; }
+}
 (async () => {
-  if (!window.claude || typeof window.claude.use !== "function") return;
+  const inArtifact = !!(window.claude && typeof window.claude.use === "function");
+  const canFetch = SYNC_URL && typeof fetch === "function" && typeof location !== "undefined" && /^(https?|file):$/.test(location.protocol || "");
+  if (canFetch) {
+    MODE = "sheet";
+    const ok = await pullSheet();
+    if (ok || !inArtifact) {
+      document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") pullSheet(); });
+      setInterval(() => { if (document.visibilityState === "visible") pullSheet(); }, 30000);
+      return;
+    }
+    MODE = "local"; setNote(LOCAL_NOTE);
+  }
+  if (!inArtifact) return;
   let db = null;
   try { db = await window.claude.use("db"); } catch (e) { db = null; }
   if (!db) return;
-  STORE = db;
-  document.getElementById("todo-store").textContent = SHARED_NOTE;
+  STORE = db; MODE = "db";
+  setNote(SHARED_NOTE);
   db.collection("todos").onSnapshot(snap => {
-    snap.docs.forEach(doc => {
-      const v = doc.data();
-      if (!todoState[doc.id] || !v) return;
-      todoState[doc.id] = { done: !!v.done, owner: OWNERS.some(o => o[0] === v.owner) ? v.owner : "none" };
-    });
-    renderTodo();
+    applyRemote(snap.docs.map(doc => ({ id: doc.id, ...(doc.data() || {}) })));
+    saveLocal(); renderTodo();
   }, () => {});
 })();
 
