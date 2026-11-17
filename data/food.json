@@ -1,0 +1,26 @@
+{
+  "shops": [
+    {
+      "name": "お好み村",
+      "when": "1日目の夜",
+      "kind": "お好み焼き",
+      "area": "新天地（KIROから歩いて10分くらい）",
+      "budget": "1人1,500円くらい",
+      "status": "候補",
+      "note": "ビルの中に小さなお好み焼き屋が集まっている。金曜の夜は混むので、待ちが長ければ別の店へ。",
+      "url": "https://www.google.com/maps/search/?api=1&query=%E3%81%8A%E5%A5%BD%E3%81%BF%E6%9D%91+%E5%BA%83%E5%B3%B6",
+      "by": "北"
+    },
+    {
+      "name": "猫屋町ビルヂング",
+      "when": "2軒目",
+      "kind": "飲み屋が集まるビル",
+      "area": "猫屋町（原爆ドームから歩いて10分）",
+      "budget": "",
+      "status": "決定",
+      "note": "金曜は11:30〜23:00（Googleマップの情報）。21:00〜22:15の予定。",
+      "url": "https://www.google.com/maps/search/?api=1&query=%E7%8C%AB%E5%B1%8B%E7%94%BA%E3%83%93%E3%83%AB%E3%83%82%E3%83%B3%E3%82%B0",
+      "by": "北"
+    }
+  ]
+}
